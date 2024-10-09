@@ -1,5 +1,6 @@
 import CryptoData from "../models/crypto.schema.js";
-
+import axios from "axios";
+import cron from "node-cron";
 //! Cron Job to update data every 2 hours
 export default async function startCryptoJob() {
   runCryptoJob();
@@ -27,6 +28,6 @@ async function runCryptoJob() {
       });
     }
   } catch (error) {
-    console.log("Something Went Wrong: ", error);
+    console.log("Something Went Wrong:", error);
   }
 }
