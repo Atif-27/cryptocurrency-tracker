@@ -48,10 +48,12 @@ This project implements a RESTful API for retrieving and analyzing cryptocurrenc
 ```
 
 ## Setup and Installation
+(Backend)
 1. Clone the repository:
    ```bash
    git clone <repository-url>
-   cd <repository-directory>
+   cd cryptocurrency-tracker
+   cd crypto-backend
    ```
 2. Install the dependencies:
    ```bash
@@ -60,6 +62,7 @@ This project implements a RESTful API for retrieving and analyzing cryptocurrenc
 3. Create a `.env` file in the root directory and add the following variables:
    ```env
    PORT=5000
+   MONGO_URI= <mongo uri>
    COINGECKO_API_URL=https://api.coingecko.com/api/v3/simple/price
    ORIGIN=http://localhost:3000
    ```
@@ -67,7 +70,25 @@ This project implements a RESTful API for retrieving and analyzing cryptocurrenc
    ```bash
    npm start
    ```
-
+   
+(Frontend)
+5. Setup Frontend:
+   ```bash
+   cd crypto-frontend
+   ```
+6. Install the dependencies:
+   ```bash
+   npm install
+   ```
+7. Create a `.env` file in the root directory and add the following variables:
+   ```env
+   NEXT_PUBLIC_BACKEND_URL=http://localhost:5000
+   ```
+8. Start the server:
+   ```bash
+   npm run dev
+   ```
+   
 ## API Endpoints
 ### 1. Get Cryptocurrency Statistics
 - **Endpoint**: `/api/stats`
