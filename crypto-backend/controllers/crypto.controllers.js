@@ -10,7 +10,7 @@ async function getCryptoStats(req, res) {
   }
   try {
     const { coin } = req.query;
-    const data = await CryptoData.findOne({ coin }).sort({ timestamp: -1 });
+    const data = await CryptoData.findOne({ coin }).sort({ createdAt: -1 });
     if (!data) {
       return res.status(404).json({ error: "Data not found" });
     }
@@ -20,6 +20,7 @@ async function getCryptoStats(req, res) {
       "24hChange": data.change24h,
     });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({
       message:
         "Something Went Wrong while fetching the stats of cryptocurrency",
@@ -37,7 +38,7 @@ async function getStandardDeviation(req, res) {
   try {
     const { coin } = req.query;
     const records = await CryptoData.find({ coin })
-      .sort({ timestamp: -1 })
+      .sort({ createdAt: -1 })
       .limit(100);
 
     if (records.length === 0) {
@@ -51,6 +52,7 @@ async function getStandardDeviation(req, res) {
       deviation: deviation.toFixed(2),
     });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({
       message:
         "Something Went Wrong while fetching the standard deviation of cryptocurrency",
