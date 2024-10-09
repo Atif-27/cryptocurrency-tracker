@@ -3,6 +3,8 @@ import connectToDB from "./utils/db.js";
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+
+
 async function init() {
   try {
     await connectToDB();
