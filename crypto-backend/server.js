@@ -1,5 +1,14 @@
 import express from "express";
+import connectToDB from "./utils/db.js";
 const app = express();
-app.listen(8000, () => {
-  console.log("Listening");
-});
+const PORT = process.env.PORT || 5000;
+
+async function init() {
+  try {
+    await connectToDB();
+    await app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  } catch (error) {
+    console.log("Failed To start the server");
+  }
+}
+init();
